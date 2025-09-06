@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Crypto Trading Dashboard Design System */
+@layer base {
+  :root {
+    /* Dark trading theme */
+    --background: 220 27% 4%;
+    --foreground: 220 14% 96%;
+
+    /* Glass cards */
+    --card: 220 27% 6%;
+    --card-foreground: 220 14% 96%;
+    --glass: 220 27% 8%;
+    --glass-border: 220 14% 20%;
+
+    --popover: 220 27% 6%;
+    --popover-foreground: 220 14% 96%;
+
+    /* Neon accents */
+    --primary: 192 100% 50%;
+    --primary-foreground: 220 27% 4%;
+    --neon-cyan: 180 100% 50%;
+    --neon-purple: 270 100% 70%;
+    --neon-green: 120 100% 50%;
+    --neon-orange: 30 100% 60%;
+
+    --secondary: 220 27% 12%;
+    --secondary-foreground: 220 14% 96%;
+
+    --muted: 220 27% 8%;
+    --muted-foreground: 220 9% 55%;
+
+    --accent: 192 100% 50%;
+    --accent-foreground: 220 27% 4%;
+
+    /* Trading colors */
+    --success: 120 100% 50%;
+    --success-foreground: 220 27% 4%;
+    --danger: 0 100% 60%;
+    --danger-foreground: 220 14% 96%;
+    --warning: 45 100% 60%;
+    --warning-foreground: 220 27% 4%;
+
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 220 14% 96%;
+
+    --border: 220 27% 12%;
+    --input: 220 27% 8%;
+    --ring: 192 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(192 100% 50%), hsl(270 100% 70%));
+    --gradient-card: linear-gradient(135deg, hsl(220 27% 6% / 0.8), hsl(220 27% 8% / 0.9));
+    --gradient-glass: linear-gradient(135deg, hsl(220 27% 8% / 0.1), hsl(220 27% 12% / 0.2));
+    --gradient-success: linear-gradient(135deg, hsl(120 100% 50%), hsl(150 100% 45%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 100% 60%), hsl(15 100% 55%));
+
+    /* Shadows */
+    --shadow-neon: 0 0 20px hsl(192 100% 50% / 0.3);
+    --shadow-glass: 0 8px 32px hsl(220 27% 4% / 0.4);
+    --shadow-card: 0 4px 16px hsl(220 27% 4% / 0.6);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border transition-all duration-300;
+  }
+
+  body {
+    @apply bg-background text-foreground min-h-screen;
+    background: radial-gradient(ellipse at top, hsl(220 27% 6%), hsl(220 27% 4%));
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--shadow-glass);
+  }
+
+  /* Neon glow effects */
+  .neon-border {
+    border: 1px solid hsl(var(--neon-cyan));
+    box-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.5), inset 0 0 10px hsl(var(--neon-cyan) / 0.1);
+  }
+
+  .glow-green {
+    box-shadow: 0 0 20px hsl(var(--success) / 0.4);
+  }
+
+  .glow-red {
+    box-shadow: 0 0 20px hsl(var(--danger) / 0.4);
+  }
+
+  /* Trading number animations */
+  .price-up {
+    @apply text-success;
+    animation: pulse-green 2s ease-in-out infinite;
+  }
+
+  .price-down {
+    @apply text-danger;
+    animation: pulse-red 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-green {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  @keyframes pulse-red {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  /* Smooth hover animations */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-neon);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Chart animations */
+  .chart-line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw-line 2s ease-in-out forwards;
+  }
+
+  @keyframes draw-line {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
