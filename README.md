@@ -14,9 +14,8 @@ It provides an interactive interface for monitoring markets, performing trades (
 ---
 
 ## 🛠️ Tech Stack
-- **Frontend**: React.js (or your frontend tech)  
-- **Backend**: Node.js / Express.js (if applicable)  
-- **Database**: MongoDB / MySQL (if applicable)  
+- **Frontend**: React.js 
+
 - **Styling**: TailwindCSS / Bootstrap  
 
 ---
